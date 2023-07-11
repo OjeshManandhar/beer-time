@@ -1,5 +1,9 @@
 import { useState } from 'react';
 
+// components
+import MyBeers from '@/components/MyBeers';
+import AllBeers from '@/components/AllBeers';
+
 function App() {
   const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('all');
 
@@ -33,6 +37,9 @@ function App() {
       </nav>
 
       <hr />
+
+      <AllBeers display={selectedTab === 'all'} />
+      <MyBeers display={selectedTab === 'my'} />
     </main>
   );
 }
