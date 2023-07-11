@@ -14,9 +14,18 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Absolute imports */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
     /* Linting */
     "strict": true,
+    "noImplicitAny": true,
     "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
