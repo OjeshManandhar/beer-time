@@ -11,7 +11,7 @@ function Card({ beer }: Props) {
 
       <div>
         <p className='text-2xl font-semibold line-clamp-1'>{beer.name}</p>
-        <p className='mt-2 text-sm font-semibold text-[#D39926] line-clamp-1'>
+        <p className='mt-2 text-sm font-semibold text-lemon line-clamp-1'>
           {beer.tagline}
         </p>
         <p className='mt-2 text-sm line-clamp-2'>{beer.description}</p>

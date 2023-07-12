@@ -8,7 +8,12 @@ export default {
       xs: '475px',
       ...defaultTheme.screens,
     },
-    extend: {},
+    extend: {
+      colors: {
+        lemon: '#d39926',
+        cerulean: '#2b65bd',
+      },
+    },
   },
   plugins: [],
 };
