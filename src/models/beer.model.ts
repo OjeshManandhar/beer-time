@@ -1,32 +1,6 @@
 import { Beer } from '@/types';
 
-let id = 1;
-const beers: Beer[] = [
-  {
-    id: 1,
-    name: 'Beer A',
-    image_url: 'https://images.punkapi.com/v2/keg.png',
-    tagline: 'Tagline A',
-    description: 'Description A',
-    ingredients: ['Food 1', 'Food 2'],
-  },
-  {
-    id: 2,
-    name: 'Beer B',
-    image_url: 'https://images.punkapi.com/v2/keg.png',
-    tagline: 'Tagline B',
-    description: 'Description B',
-    ingredients: ['Food 1', 'Food 2'],
-  },
-  {
-    id: 3,
-    name: 'Beer C',
-    image_url: 'https://images.punkapi.com/v2/keg.png',
-    tagline: 'Tagline B',
-    description: 'Description C',
-    ingredients: ['Food 1', 'Food 2'],
-  },
-];
+const beers: Beer[] = [];
 
 class BeerModel implements Beer {
   id: number;
@@ -44,7 +18,7 @@ class BeerModel implements Beer {
       };
 
   constructor(beer: Omit<Beer, 'id' | 'image_url'>) {
-    this.id = id++;
+    this.id = beers.length + 1;
     this.name = beer.name;
     this.tagline = beer.tagline;
     this.image_url = null;
@@ -57,7 +31,7 @@ class BeerModel implements Beer {
   }
 
   static add(beer: Omit<Beer, 'id' | 'image_url'>) {
-    const newBeer = { ...beer, id: id++, image_url: null };
+    const newBeer = { ...beer, id: beers.length + 1, image_url: null };
 
     beers.push(newBeer);
   }

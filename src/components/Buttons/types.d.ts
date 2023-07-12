@@ -6,4 +6,5 @@ export type Props = {
   disabled?: boolean;
   classNames?: string;
   onClick?: () => void;
+  type?: 'button' | 'submit' | 'reset';
 };

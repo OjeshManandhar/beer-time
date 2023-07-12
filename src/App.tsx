@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
+// packages
+import ReactModal from 'react-modal';
+
 // components
 import MyBeers from '@/components/MyBeers';
 import AllBeers from '@/components/AllBeers';
-import ReactModal from 'react-modal';
-import ButtonPrimary from './components/Buttons/Primary';
+import AddBeerForm from '@/components/AddBeerForm';
+import ButtonPrimary from '@/components/Buttons/Primary';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -53,9 +56,7 @@ function App() {
         overlayClassName='fixed inset-0 grid w-screen h-screen bg-sonic-silver/75 place-items-center'
         className='p-5 bg-white border rounded drop-shadow-md'
       >
-        <ButtonPrimary onClick={() => setShowModal(false)}>
-          Close Modal
-        </ButtonPrimary>
+        <AddBeerForm closeModal={() => setShowModal(false)} />
       </ReactModal>
     </main>
   );

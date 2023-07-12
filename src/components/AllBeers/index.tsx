@@ -1,6 +1,7 @@
 // components
 import List from '@/components/List';
 import Message from '@/components/Message';
+import ButtonNoOutline from '@/components/Buttons/NoOutline';
 
 // hooks
 import { useGetBeersInfiniteQuery } from '@/hooks/apis/beer.hook';
@@ -8,7 +9,6 @@ import { useGetBeersInfiniteQuery } from '@/hooks/apis/beer.hook';
 // types
 import type { Beer } from '@/types';
 import type { Props } from './types';
-import ButtonNoOutline from '../Buttons/NoOutline';
 
 function AllBeers(props: Props) {
   const {
