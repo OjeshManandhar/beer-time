@@ -8,7 +8,7 @@ import ButtonPrimary from './components/Buttons/Primary';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('all');
+  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('my');
 
   return (
     <main className='container px-2 mx-auto'>
@@ -47,8 +47,15 @@ function App() {
       <AllBeers display={selectedTab === 'all'} />
       <MyBeers display={selectedTab === 'my'} />
 
-      <ReactModal isOpen={showModal} contentLabel='Minimal Modal Example'>
-        <button onClick={() => setShowModal(false)}>Close Modal</button>
+      <ReactModal
+        isOpen={showModal}
+        contentLabel='Add custom beer'
+        overlayClassName='fixed inset-0 grid w-screen h-screen bg-sonic-silver/75 place-items-center'
+        className='p-5 bg-white border rounded drop-shadow-md'
+      >
+        <ButtonPrimary onClick={() => setShowModal(false)}>
+          Close Modal
+        </ButtonPrimary>
       </ReactModal>
     </main>
   );
