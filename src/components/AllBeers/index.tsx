@@ -31,7 +31,18 @@ function AllBeers(props: Props) {
       description:
         'Japanese citrus fruit intensifies the sour nature of this German classic.',
       image_url: 'https://images.punkapi.com/v2/keg.png',
-      ingredients: ['Food 1', 'Food 2'],
+      ingredients: [
+        'Food 1',
+        'Food 2',
+        'Food 3',
+        'Food 4',
+        'Food 5',
+        'Food 1',
+        'Food 2',
+        'Food 3',
+        'Food 4',
+        'Food 5',
+      ],
     },
   ];
 

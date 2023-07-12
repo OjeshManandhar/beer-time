@@ -30,7 +30,7 @@ function App() {
         </ul>
 
         {selectedTab === 'my' && (
-          <button className='p-2 ml-auto text-sm font-semibold text-white rounded bg-cerulean xs:px-5'>
+          <button className='p-2 ml-auto text-sm font-semibold text-white rounded bg-cerulean-blue xs:px-5'>
             Add a new beer
           </button>
         )}
