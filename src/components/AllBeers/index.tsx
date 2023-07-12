@@ -8,29 +8,29 @@ function AllBeers(props: Props) {
   const beers = [
     {
       id: 1,
-      name: 'Beer 1',
+      name: 'Buzz',
       image_url: 'https://images.punkapi.com/v2/keg.png',
-      tagline: 'Tagline 1',
+      tagline: 'A Real Bitter Experience.',
       description:
-        'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.',
       ingredients: ['Food 1', 'Food 2'],
     },
     {
       id: 2,
-      name: 'Beer 2',
-      image_url: 'https://images.punkapi.com/v2/keg.png',
-      tagline: 'Tagline 1',
+      name: 'Trashy Blonde',
+      tagline: "You Know You Shouldn't",
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, facilis saepe. Cupiditate, laboriosam? At voluptatem cum dolores quibusdam libero iste impedit eos illum dolore repellendus?',
+        'A titillating, neurotic, peroxide punk of a Pale Ale. Combining attitude, style, substance, and a little bit of low self esteem for good measure; what would your mother say? The seductive lure of the sassy passion fruit hop proves too much to resist. All that is even before we get onto the fact that there are no additives, preservatives, pasteurization or strings attached. All wrapped up with the customary BrewDog bite and imaginative twist.',
+      image_url: 'https://images.punkapi.com/v2/2.png',
       ingredients: ['Food 1', 'Food 2'],
     },
     {
       id: 3,
-      name: 'Beer 3',
-      image_url: 'https://images.punkapi.com/v2/keg.png',
-      tagline: 'Tagline 1',
+      name: 'Berliner Weisse With Yuzu - B-Sides',
+      tagline: 'Japanese Citrus Berliner Weisse.',
       description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente doloribus consequatur sunt praesentium eius totam libero ea est inventore magni facere alias repellendus cum, aspernatur voluptates architecto maiores perspiciatis! Voluptatum.',
+        'Japanese citrus fruit intensifies the sour nature of this German classic.',
+      image_url: 'https://images.punkapi.com/v2/keg.png',
       ingredients: ['Food 1', 'Food 2'],
     },
   ];
