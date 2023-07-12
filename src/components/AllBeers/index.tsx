@@ -40,7 +40,7 @@ function AllBeers(props: Props) {
         <button
           onClick={() => fetchNextPage()}
           disabled={!hasNextPage || isFetchingNextPage}
-          className='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold cursor-pointer text-french-blue'
+          className='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold cursor-pointer disabled:cursor-not-allowed text-french-blue'
         >
           {(() => {
             if (isFetchingNextPage) {
