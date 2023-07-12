@@ -1,18 +1,46 @@
-// components
-import Test from '@/components/Test';
-import Dummy from '@/components/Dummy';
+import { useState } from 'react';
 
-// env
-import { TEST_KEY } from './env_config';
+// components
+import MyBeers from '@/components/MyBeers';
+import AllBeers from '@/components/AllBeers';
 
 function App() {
-  return (
-    <>
-      <h1 className='text-3xl font-bold underline'>{TEST_KEY}</h1>
+  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('all');
 
-      <Test />
-      <Dummy />
-    </>
+  return (
+    <main className='container mx-auto'>
+      <nav className='flex flex-row items-center justify-start px-1 py-4 text-lg'>
+        <ul className='flex flex-row items-center justify-start gap-0 xs:gap-5'>
+          <li
+            className={`cursor-pointer p-1 ${
+              selectedTab === 'all' ? 'font-bold' : ''
+            }`}
+            onClick={() => setSelectedTab('all')}
+          >
+            All Beers
+          </li>
+          <li
+            className={`cursor-pointer p-1 ${
+              selectedTab === 'my' ? 'font-bold' : ''
+            }`}
+            onClick={() => setSelectedTab('my')}
+          >
+            My Beers
+          </li>
+        </ul>
+
+        {selectedTab === 'my' && (
+          <button className='px-1 py-1 ml-auto text-white bg-blue-500 rounded xs:px-5'>
+            Add a new beer
+          </button>
+        )}
+      </nav>
+
+      <hr />
+
+      <AllBeers display={selectedTab === 'all'} />
+      <MyBeers display={selectedTab === 'my'} />
+    </main>
   );
 }
 
