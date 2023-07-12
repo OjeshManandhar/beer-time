@@ -8,6 +8,7 @@ import { useGetBeersInfiniteQuery } from '@/hooks/apis/beer.hook';
 // types
 import type { Beer } from '@/types';
 import type { Props } from './types';
+import ButtonNoOutline from '../Buttons/NoOutline';
 
 function AllBeers(props: Props) {
   const {
@@ -45,10 +46,10 @@ function AllBeers(props: Props) {
       <>
         <List beers={beers} />
 
-        <button
+        <ButtonNoOutline
           onClick={() => fetchNextPage()}
           disabled={!hasNextPage || isFetchingNextPage}
-          className='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold cursor-pointer disabled:cursor-not-allowed text-french-blue'
+          classNames='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold'
         >
           {(() => {
             if (isFetchingNextPage) {
@@ -74,7 +75,7 @@ function AllBeers(props: Props) {
               </>
             );
           })()}
-        </button>
+        </ButtonNoOutline>
       </>
     );
   };

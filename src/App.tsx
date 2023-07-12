@@ -4,6 +4,7 @@ import { useState } from 'react';
 import MyBeers from '@/components/MyBeers';
 import AllBeers from '@/components/AllBeers';
 import ReactModal from 'react-modal';
+import ButtonPrimary from './components/Buttons/Primary';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
@@ -32,12 +33,12 @@ function App() {
         </ul>
 
         {selectedTab === 'my' && (
-          <button
-            className='p-2 ml-auto text-sm font-semibold text-white rounded bg-cerulean-blue xs:px-5'
+          <ButtonPrimary
+            classNames='ml-auto text-sm font-semibold xs:px-5'
             onClick={() => setShowModal(true)}
           >
             Add a new beer
-          </button>
+          </ButtonPrimary>
         )}
       </nav>
 
