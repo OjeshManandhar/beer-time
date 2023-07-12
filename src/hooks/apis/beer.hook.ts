@@ -8,7 +8,7 @@ import { convertApiResponseToBeer } from '@/utils/conversion';
 import type { Beer, BeerApiResponse } from '@/types';
 
 // env
-import { PAGE_SIZE } from '@/env_config';
+import { API_URL, PAGE_SIZE } from '@/env_config';
 
 export const useGetBeersInfiniteQuery = () => {
   return useInfiniteQuery<Beer[], Error>(
@@ -16,7 +16,7 @@ export const useGetBeersInfiniteQuery = () => {
     async ({ pageParam = { page: 1 } }) => {
       try {
         const res = await fetch(
-          `https://api.punkapi.com/v2/beers?page=${pageParam.page}&per_page=${PAGE_SIZE}`,
+          `${API_URL}/beers?page=${pageParam.page}&per_page=${PAGE_SIZE}`,
         );
 
         if (res.ok) {
