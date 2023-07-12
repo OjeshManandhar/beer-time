@@ -10,6 +10,7 @@ export default {
     },
     extend: {
       colors: {
+        alice: '#f3f8fd',
         lemon: '#d39926',
         cerulean: '#2b65bd',
       },
