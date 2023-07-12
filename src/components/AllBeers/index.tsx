@@ -31,7 +31,7 @@ function AllBeers(props: Props) {
       });
     });
 
-    if (!beers.length)
+    if (!beers.length) {
       return (
         <Message>
           <p>
@@ -39,6 +39,7 @@ function AllBeers(props: Props) {
           </p>
         </Message>
       );
+    }
 
     return (
       <>
