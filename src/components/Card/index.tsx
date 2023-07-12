@@ -6,7 +6,7 @@ import type { Props } from './types';
 
 function Card({ beer }: Props) {
   return (
-    <li className='flex flex-row h-40 gap-5 p-6 overflow-visible bg-white rounded cursor-pointer drop-shadow-md hover:bg-alice-blue'>
+    <li className='flex flex-row h-40 gap-5 p-6 overflow-visible transition-all bg-white rounded cursor-pointer card drop-shadow-md hover:bg-alice-blue'>
       <img
         id={`all-beer-img-${beer.id}`}
         src={beer.image_url}
@@ -24,7 +24,7 @@ function Card({ beer }: Props) {
 
       <Tooltip
         anchorSelect={`#all-beer-img-${beer.id}`}
-        delayShow={500}
+        delayShow={150}
         place='top'
         className='px-2 py-1 bg-raisin-black max-w-[250px]'
       >
