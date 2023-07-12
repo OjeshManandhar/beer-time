@@ -30,7 +30,23 @@ function Card({ beer }: Props) {
       >
         {typeof beer.ingredients === 'string'
           ? beer.ingredients
-          : beer.ingredients.join(', ')}
+          : Array.isArray(beer.ingredients)
+          ? beer.ingredients.join(', ')
+          : (() => {
+              return (
+                <>
+                  <p>
+                    <strong>Malt:</strong> {beer.ingredients.malt.join(', ')}
+                  </p>
+                  <p>
+                    <strong>Hops:</strong> {beer.ingredients.hops.join(', ')}
+                  </p>
+                  <p>
+                    <strong>Yeast:</strong> {beer.ingredients.yeast}
+                  </p>
+                </>
+              );
+            })()}
       </Tooltip>
     </li>
   );

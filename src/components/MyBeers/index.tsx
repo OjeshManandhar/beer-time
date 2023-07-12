@@ -34,7 +34,7 @@ function MyBeers(props: Props) {
 
   return (
     <div
-      className={`mt-3 transition-all ${props.display ? 'block' : 'hidden'}`}
+      className={`my-5 transition-all ${props.display ? 'block' : 'hidden'}`}
     >
       <List beers={beers} />
     </div>
