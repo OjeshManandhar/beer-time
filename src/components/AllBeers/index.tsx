@@ -1,6 +1,9 @@
 // components
 import List from '@/components/List';
 
+// hooks
+import { useGetBeersQuery } from '@/hooks/apis/beer.hook';
+
 // types
 import type { Props } from './types';
 
@@ -45,6 +48,14 @@ function AllBeers(props: Props) {
       ],
     },
   ];
+
+  const { data, isError, isLoading, isSuccess } = useGetBeersQuery();
+
+  console.log({ data, isError, isLoading, isSuccess });
+
+  if (isLoading) return <h1>Loading</h1>;
+
+  if (isError) return <h1>Error</h1>;
 
   return (
     <div
