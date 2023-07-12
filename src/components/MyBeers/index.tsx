@@ -1,5 +1,5 @@
 // components
-import BeerList from '@/components/BeerList';
+import List from '@/components/List';
 
 // types
 import type { Props } from './types';
@@ -34,9 +34,9 @@ function MyBeers(props: Props) {
 
   return (
     <div
-      className={`mt-3 transition-all ${props.display ? 'block' : 'hidden'}`}
+      className={`my-5 transition-all ${props.display ? 'block' : 'hidden'}`}
     >
-      <BeerList beers={beers} />
+      <List beers={beers} />
     </div>
   );
 }

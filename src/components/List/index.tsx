@@ -4,7 +4,7 @@ import Card from '@/components/Card';
 // types
 import type { Props } from './types';
 
-function BeerList({ beers }: Props) {
+function List({ beers }: Props) {
   return (
     <ul className='grid grid-cols-1 gap-6 md:grid-cols-2'>
       {beers.map(beer => (
@@ -14,4 +14,4 @@ function BeerList({ beers }: Props) {
   );
 }
 
-export default BeerList;
+export default List;
