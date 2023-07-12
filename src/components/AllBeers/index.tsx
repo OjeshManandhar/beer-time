@@ -24,7 +24,6 @@ function AllBeers(props: Props) {
 
     if (status === 'error' && error) return <Message>{error.message}</Message>;
 
-    console.log('data:', data);
     const beers: Beer[] = [];
     data.pages.forEach(page => {
       page.forEach(beer => {
@@ -41,12 +40,32 @@ function AllBeers(props: Props) {
         <button
           onClick={() => fetchNextPage()}
           disabled={!hasNextPage || isFetchingNextPage}
+          className='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold cursor-pointer text-french-blue'
         >
-          {isFetchingNextPage
-            ? 'Loading more...'
-            : hasNextPage
-            ? 'Load More'
-            : 'Nothing more to load'}
+          {(() => {
+            if (isFetchingNextPage) {
+              return (
+                <>
+                  Loading{' '}
+                  <i className='fa-solid fa-circle-notch animate-spin'></i>
+                </>
+              );
+            }
+
+            if (hasNextPage) {
+              return (
+                <>
+                  Load More <i className='fa-solid fa-angle-down'></i>
+                </>
+              );
+            }
+
+            return (
+              <>
+                Nothing more to load <i className='fa-solid fa-check'></i>
+              </>
+            );
+          })()}
         </button>
       </>
     );
