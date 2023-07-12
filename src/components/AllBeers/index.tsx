@@ -31,7 +31,14 @@ function AllBeers(props: Props) {
       });
     });
 
-    if (!beers.length) return <Message>{'No beers :('}</Message>;
+    if (!beers.length)
+      return (
+        <Message>
+          <p>
+            No beers <i className='ml-2 fa-solid fa-face-sad-cry'></i>
+          </p>
+        </Message>
+      );
 
     return (
       <>
