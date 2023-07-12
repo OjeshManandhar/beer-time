@@ -1,5 +1,6 @@
 // components
 import List from '@/components/List';
+import Message from '@/components/Message';
 
 // hooks
 import { useGetBeersQuery } from '@/hooks/apis/beer.hook';
@@ -49,19 +50,23 @@ function AllBeers(props: Props) {
     },
   ];
 
-  const { data, isError, isLoading, isSuccess } = useGetBeersQuery();
+  const { data, error, isError, isLoading, isSuccess } = useGetBeersQuery();
 
-  console.log({ data, isError, isLoading, isSuccess });
+  console.log('error:', error);
 
-  if (isLoading) return <h1>Loading</h1>;
+  const content = () => {
+    if (isLoading) return <Message>Loading...</Message>;
 
-  if (isError) return <h1>Error</h1>;
+    if (isError) return <Message>Error</Message>;
+
+    if (isSuccess && !data.length) return <Message>{'No beers :('}</Message>;
+
+    return <List beers={beers} />;
+  };
 
   return (
-    <div
-      className={`mt-3 transition-all ${props.display ? 'block' : 'hidden'}`}
-    >
-      <List beers={beers} />
+    <div className={`mt-3 ${props.display ? 'block' : 'hidden'}`}>
+      {content()}
     </div>
   );
 }
