@@ -3,22 +3,53 @@ import List from '@/components/List';
 import Message from '@/components/Message';
 
 // hooks
-import { useGetBeersQuery } from '@/hooks/apis/beer.hook';
+import { useGetBeersInfiniteQuery } from '@/hooks/apis/beer.hook';
 
 // types
+import type { Beer } from '@/types';
 import type { Props } from './types';
 
 function AllBeers(props: Props) {
-  const { data, error, status } = useGetBeersQuery();
+  const {
+    data,
+    error,
+    status,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useGetBeersInfiniteQuery();
 
   const content = () => {
     if (status === 'loading') return <Message>Loading...</Message>;
 
     if (status === 'error' && error) return <Message>{error.message}</Message>;
 
-    if (!data || !data.length) return <Message>{'No beers :('}</Message>;
+    console.log('data:', data);
+    const beers: Beer[] = [];
+    data.pages.forEach(page => {
+      page.forEach(beer => {
+        beers.push(beer);
+      });
+    });
 
-    return <List beers={data} />;
+    if (!beers.length) return <Message>{'No beers :('}</Message>;
+
+    return (
+      <>
+        <List beers={beers} />
+
+        <button
+          onClick={() => fetchNextPage()}
+          disabled={!hasNextPage || isFetchingNextPage}
+        >
+          {isFetchingNextPage
+            ? 'Loading more...'
+            : hasNextPage
+            ? 'Load More'
+            : 'Nothing more to load'}
+        </button>
+      </>
+    );
   };
 
   return (
