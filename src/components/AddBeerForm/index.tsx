@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react';
 
 // components
 import ButtonPrimary from '@/components/Buttons/Primary';
+import ButtonNoOutline from '@/components/Buttons/NoOutline';
 
 // models
 import BeerModel from '@/models/beer.model';
@@ -81,8 +82,13 @@ function AddBeerForm({ closeModal }: Props) {
       ></textarea>
 
       <div className='text-right'>
-        <ButtonPrimary onClick={() => closeModal()}>Cancel</ButtonPrimary>
-        <ButtonPrimary type='submit' classNames='ml-3'>
+        <ButtonNoOutline
+          onClick={() => closeModal()}
+          classNames='text-sonic-silver'
+        >
+          Cancel
+        </ButtonNoOutline>
+        <ButtonPrimary type='submit' classNames='ml-6 px-6'>
           Save
         </ButtonPrimary>
       </div>
