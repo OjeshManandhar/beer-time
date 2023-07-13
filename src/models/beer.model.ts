@@ -1,44 +1,19 @@
-import { Beer } from '@/types';
+// packages
+import Dexie, { Table } from 'dexie';
 
-const beers: Beer[] = [];
+// types
+import type { Beer } from '@/types';
 
-class BeerModel implements Beer {
-  id: number;
-  name: string;
-  tagline: string;
-  image_url: string | null;
-  description: string;
-  ingredients:
-    | string
-    | string[]
-    | {
-        malt: string[];
-        hops: string[];
-        yeast: string;
-      };
+class BeerDexieModel extends Dexie {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  beers: Table<Beer> = null!;
 
-  constructor(beer: Omit<Beer, 'id' | 'image_url'>) {
-    this.id = beers.length + 1;
-    this.name = beer.name;
-    this.tagline = beer.tagline;
-    this.image_url = null;
-    this.description = beer.description;
-    this.ingredients = beer.ingredients;
-  }
-
-  save() {
-    beers.push(this);
-  }
-
-  static add(beer: Omit<Beer, 'id' | 'image_url'>) {
-    const newBeer = { ...beer, id: beers.length + 1, image_url: null };
-
-    beers.push(newBeer);
-  }
-
-  static getAll(): Beer[] {
-    return beers;
+  constructor() {
+    super('BeersDB');
+    this.version(1).stores({
+      beers: '++id',
+    });
   }
 }
 
-export default BeerModel;
+export const beerDB = new BeerDexieModel();
