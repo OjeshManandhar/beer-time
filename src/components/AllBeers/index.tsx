@@ -1,6 +1,7 @@
 // components
 import List from '@/components/List';
 import Message from '@/components/Message';
+import ButtonNoOutline from '@/components/Buttons/NoOutline';
 
 // hooks
 import { useGetBeersInfiniteQuery } from '@/hooks/apis/beer.hook';
@@ -31,7 +32,7 @@ function AllBeers(props: Props) {
       });
     });
 
-    if (!beers.length)
+    if (!beers.length) {
       return (
         <Message>
           <p>
@@ -39,15 +40,16 @@ function AllBeers(props: Props) {
           </p>
         </Message>
       );
+    }
 
     return (
       <>
         <List beers={beers} />
 
-        <button
+        <ButtonNoOutline
           onClick={() => fetchNextPage()}
           disabled={!hasNextPage || isFetchingNextPage}
-          className='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold cursor-pointer disabled:cursor-not-allowed text-french-blue'
+          classNames='flex flex-row items-center justify-start gap-3 mx-auto mt-5 font-semibold'
         >
           {(() => {
             if (isFetchingNextPage) {
@@ -73,7 +75,7 @@ function AllBeers(props: Props) {
               </>
             );
           })()}
-        </button>
+        </ButtonNoOutline>
       </>
     );
   };

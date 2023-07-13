@@ -1,42 +1,45 @@
+import { useState } from 'react';
+
 // components
 import List from '@/components/List';
+import Message from '@/components/Message';
+
+// models
+import BeerModel from '@/models/beer.model';
+
+// assets
+import MyBeer from '@/assets/images/my-beer.png';
 
 // types
 import type { Props } from './types';
+import ButtonNoOutline from '../Buttons/NoOutline';
 
 function MyBeers(props: Props) {
-  const beers = [
-    {
-      id: 1,
-      name: 'Beer A',
-      image_url: 'https://images.punkapi.com/v2/keg.png',
-      tagline: 'Tagline A',
-      description: 'Description A',
-      ingredients: ['Food 1', 'Food 2'],
-    },
-    {
-      id: 2,
-      name: 'Beer B',
-      image_url: 'https://images.punkapi.com/v2/keg.png',
-      tagline: 'Tagline B',
-      description: 'Description B',
-      ingredients: ['Food 1', 'Food 2'],
-    },
-    {
-      id: 3,
-      name: 'Beer C',
-      image_url: 'https://images.punkapi.com/v2/keg.png',
-      tagline: 'Tagline B',
-      description: 'Description C',
-      ingredients: ['Food 1', 'Food 2'],
-    },
-  ];
+  const [beers] = useState(BeerModel.getAll());
+
+  const content = () => {
+    if (!beers.length) {
+      return (
+        <Message>
+          <p className='text-center'>Nothing to see yet.</p>
+          <p className='text-center'>
+            <ButtonNoOutline onClick={() => props.openModal()}>
+              Click here
+            </ButtonNoOutline>{' '}
+            to add your first beer!
+          </p>
+        </Message>
+      );
+    }
+
+    return <List beers={beers} placeholderImage={MyBeer} />;
+  };
 
   return (
     <div
       className={`my-5 transition-all ${props.display ? 'block' : 'hidden'}`}
     >
-      <List beers={beers} />
+      {content()}
     </div>
   );
 }

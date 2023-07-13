@@ -1,11 +1,19 @@
 import { useState } from 'react';
 
+// packages
+import ReactModal from 'react-modal';
+
 // components
 import MyBeers from '@/components/MyBeers';
 import AllBeers from '@/components/AllBeers';
+import AddBeerForm from '@/components/AddBeerForm';
+import ButtonPrimary from '@/components/Buttons/Primary';
+
+ReactModal.setAppElement('#root');
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('all');
+  const [showModal, setShowModal] = useState(false);
+  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('my');
 
   return (
     <main className='container px-2 mx-auto'>
@@ -30,16 +38,31 @@ function App() {
         </ul>
 
         {selectedTab === 'my' && (
-          <button className='p-2 ml-auto text-sm font-semibold text-white rounded bg-cerulean-blue xs:px-5'>
+          <ButtonPrimary
+            classNames='ml-auto text-sm font-semibold xs:px-5'
+            onClick={() => setShowModal(true)}
+          >
             Add a new beer
-          </button>
+          </ButtonPrimary>
         )}
       </nav>
 
       <hr />
 
       <AllBeers display={selectedTab === 'all'} />
-      <MyBeers display={selectedTab === 'my'} />
+      <MyBeers
+        display={selectedTab === 'my'}
+        openModal={() => setShowModal(true)}
+      />
+
+      <ReactModal
+        isOpen={showModal}
+        contentLabel='Add custom beer'
+        overlayClassName='fixed inset-0 grid w-screen h-screen bg-sonic-silver/75 place-items-center'
+        className='p-5 bg-white border rounded drop-shadow-md'
+      >
+        <AddBeerForm closeModal={() => setShowModal(false)} />
+      </ReactModal>
     </main>
   );
 }

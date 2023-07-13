@@ -11,9 +11,7 @@ export default {
     extend: {
       colors: {
         lotion: '#fafafa',
-        'cyan-blue': '#3e75c3',
         'alice-blue': '#f3f8fd',
-        'french-blue': '#0167c3',
         'lemon-curry': '#d39926',
         'raisin-black': '#222222',
         'sonic-silver': '#777777',
