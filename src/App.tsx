@@ -13,7 +13,7 @@ ReactModal.setAppElement('#root');
 
 function App() {
   const [showModal, setShowModal] = useState(false);
-  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('my');
+  const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('all');
 
   return (
     <main className='container px-2 mx-auto'>
