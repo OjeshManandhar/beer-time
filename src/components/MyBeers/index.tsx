@@ -12,6 +12,7 @@ import MyBeer from '@/assets/images/my-beer.png';
 
 // types
 import type { Props } from './types';
+import ButtonNoOutline from '../Buttons/NoOutline';
 
 function MyBeers(props: Props) {
   const [beers] = useState(BeerModel.getAll());
@@ -21,7 +22,12 @@ function MyBeers(props: Props) {
       return (
         <Message>
           <p className='text-center'>Nothing to see yet.</p>
-          <p className='text-center'>Click here to add your first beer!</p>
+          <p className='text-center'>
+            <ButtonNoOutline onClick={() => props.openModal()}>
+              Click here
+            </ButtonNoOutline>{' '}
+            to add your first beer!
+          </p>
         </Message>
       );
     }

@@ -50,7 +50,10 @@ function App() {
       <hr />
 
       <AllBeers display={selectedTab === 'all'} />
-      <MyBeers display={selectedTab === 'my'} />
+      <MyBeers
+        display={selectedTab === 'my'}
+        openModal={() => setShowModal(true)}
+      />
 
       <ReactModal
         isOpen={showModal}
