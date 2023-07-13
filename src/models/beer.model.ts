@@ -5,8 +5,7 @@ import Dexie, { Table } from 'dexie';
 import type { Beer } from '@/types';
 
 class BeerDexieModel extends Dexie {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  beers: Table<Beer>;
+  beers!: Table<Beer>;
 
   constructor() {
     super('BeersDB');
