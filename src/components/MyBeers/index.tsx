@@ -7,11 +7,14 @@ import Message from '@/components/Message';
 // models
 import BeerModel from '@/models/beer.model';
 
+// assets
+import MyBeer from '@/assets/images/my-beer.png';
+
 // types
 import type { Props } from './types';
 
 function MyBeers(props: Props) {
-  const [beers, setBeers] = useState(BeerModel.getAll());
+  const [beers] = useState(BeerModel.getAll());
 
   const content = () => {
     if (!beers.length) {
@@ -23,7 +26,7 @@ function MyBeers(props: Props) {
       );
     }
 
-    return <List beers={beers} />;
+    return <List beers={beers} placeholderImage={MyBeer} />;
   };
 
   return (

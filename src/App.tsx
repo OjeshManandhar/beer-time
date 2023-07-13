@@ -9,6 +9,8 @@ import AllBeers from '@/components/AllBeers';
 import AddBeerForm from '@/components/AddBeerForm';
 import ButtonPrimary from '@/components/Buttons/Primary';
 
+ReactModal.setAppElement('#root');
+
 function App() {
   const [showModal, setShowModal] = useState(false);
   const [selectedTab, setSelectedTab] = useState<'all' | 'my'>('my');
