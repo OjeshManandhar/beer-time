@@ -100,7 +100,8 @@ function AddBeerForm({ closeModal }: Props) {
         <ButtonPrimary type='submit' classNames='ml-6 px-6' disabled={isSaving}>
           {isSaving ? (
             <>
-              Saving <i className='fa-solid fa-circle-notch animate-spin'></i>
+              Saving{' '}
+              <i className='ml-3 fa-solid fa-circle-notch animate-spin'></i>
             </>
           ) : (
             'Save'

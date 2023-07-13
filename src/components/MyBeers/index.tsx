@@ -23,7 +23,8 @@ function MyBeers(props: Props) {
       return (
         <Message>
           <p>
-            Loading <i className='fa-solid fa-circle-notch animate-spin'></i>
+            Loading{' '}
+            <i className='ml-3 fa-solid fa-circle-notch animate-spin'></i>
           </p>
         </Message>
       );
