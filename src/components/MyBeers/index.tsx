@@ -1,23 +1,34 @@
-import { useState } from 'react';
+// packages
+import { useLiveQuery } from 'dexie-react-hooks';
 
 // components
 import List from '@/components/List';
 import Message from '@/components/Message';
+import ButtonNoOutline from '@/components/Buttons/NoOutline';
 
 // models
-import BeerModel from '@/models/beer.model';
+import { db } from '@/models/beer.model';
 
 // assets
 import MyBeer from '@/assets/images/my-beer.png';
 
 // types
 import type { Props } from './types';
-import ButtonNoOutline from '../Buttons/NoOutline';
 
 function MyBeers(props: Props) {
-  const [beers] = useState(BeerModel.getAll());
+  const beers = useLiveQuery(() => db.beers.toArray());
 
   const content = () => {
+    if (!beers) {
+      return (
+        <Message>
+          <p>
+            Loading <i className='fa-solid fa-circle-notch animate-spin'></i>
+          </p>
+        </Message>
+      );
+    }
+
     if (!beers.length) {
       return (
         <Message>

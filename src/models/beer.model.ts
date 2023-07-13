@@ -6,7 +6,7 @@ import type { Beer } from '@/types';
 
 class BeerDexieModel extends Dexie {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  beers: Table<Beer> = null!;
+  beers: Table<Beer>;
 
   constructor() {
     super('BeersDB');
@@ -16,4 +16,4 @@ class BeerDexieModel extends Dexie {
   }
 }
 
-export const beerDB = new BeerDexieModel();
+export const db = new BeerDexieModel();
