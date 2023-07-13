@@ -1,11 +1,11 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 
 // components
 import ButtonPrimary from '@/components/Buttons/Primary';
 import ButtonNoOutline from '@/components/Buttons/NoOutline';
 
 // models
-import BeerModel from '@/models/beer.model';
+import { db } from '@/models/beer.model';
 
 // assets
 import MyBeerImage from '@/assets/images/my-beer.png';
@@ -14,25 +14,34 @@ import MyBeerImage from '@/assets/images/my-beer.png';
 import type { Props } from './types';
 
 function AddBeerForm({ closeModal }: Props) {
+  const [isSaving, setIsSaving] = useState(false);
+
   const [name, setName] = useState<string>('');
   const [tagline, setTagline] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [ingredients, setIngredients] = useState<string>('');
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    if (!name || !tagline || !description || !ingredients) return;
+      if (!name || !tagline || !description || !ingredients) return;
 
-    BeerModel.add({
-      name,
-      tagline,
-      description,
-      ingredients,
-    });
+      setIsSaving(true);
 
-    closeModal();
-  };
+      await db.beers.add({
+        name,
+        tagline,
+        description,
+        ingredients,
+        image_url: null,
+      });
+
+      closeModal();
+      setIsSaving(false);
+    },
+    [name, tagline, closeModal, description, ingredients],
+  );
 
   return (
     <form
@@ -88,8 +97,15 @@ function AddBeerForm({ closeModal }: Props) {
         >
           Cancel
         </ButtonNoOutline>
-        <ButtonPrimary type='submit' classNames='ml-6 px-6'>
-          Save
+        <ButtonPrimary type='submit' classNames='ml-6 px-6' disabled={isSaving}>
+          {isSaving ? (
+            <>
+              Saving{' '}
+              <i className='ml-3 fa-solid fa-circle-notch animate-spin'></i>
+            </>
+          ) : (
+            'Save'
+          )}
         </ButtonPrimary>
       </div>
     </form>

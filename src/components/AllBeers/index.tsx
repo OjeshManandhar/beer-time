@@ -21,7 +21,15 @@ function AllBeers(props: Props) {
   } = useGetBeersInfiniteQuery();
 
   const content = () => {
-    if (status === 'loading') return <Message>Loading...</Message>;
+    if (status === 'loading')
+      return (
+        <Message>
+          <p>
+            Loading{' '}
+            <i className='ml-3 fa-solid fa-circle-notch animate-spin'></i>
+          </p>
+        </Message>
+      );
 
     if (status === 'error' && error) return <Message>{error.message}</Message>;
 

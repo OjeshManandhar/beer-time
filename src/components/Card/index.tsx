@@ -28,7 +28,9 @@ function Card({ beer, placeholderImage }: Props) {
         <p className='mt-2 text-sm font-semibold text-lemon-curry line-clamp-1'>
           {beer.tagline}
         </p>
-        <p className='mt-2 text-sm line-clamp-2'>{beer.description}</p>
+        <p className='mt-2 text-sm whitespace-pre-wrap line-clamp-2'>
+          {beer.description}
+        </p>
       </div>
 
       <Tooltip
